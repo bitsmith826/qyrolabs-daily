@@ -174,3 +174,33 @@ Jika Anda ingin menambahkan akun secara manual atau menggunakan proxy untuk tiap
 - File `accounts.json` telah dimasukkan ke dalam `.gitignore` sehingga tidak akan terunggah ke repositori publik.
 - Token refresh ditangani langsung dengan endpoint Supabase resmi proyek Qyro Labs.
 - Hadiah airdrop $QYRO akan didistribusikan ke alamat Solana dan EVM yang telah terdaftar di profil akun Anda.
+
+---
+
+## 🎓 Pembelajaran & Studi Arsitektur (Educational & Technical Insights)
+
+Repositori ini dirancang sebagai studi kasus nyata mengenai teknik rekayasa balik (*reverse engineering*) dan otomatisasi aplikasi web modern berbasis Full-Stack SSR. Beberapa konsep teknik penting yang diimplementasikan dalam proyek ini:
+
+### 1. Reverse Engineering TanStack Start & Seroval RPC
+- **TanStack Start (Vinxi/Nitro)** menggunakan arsitektur *Server Functions* (`_serverFn/<hash>`).
+- Berbeda dari REST API biasa yang menggunakan JSON murni, payload request dan response dikodekan menggunakan protokol **Seroval** (format serialisasi JavaScript yang mendukung tipe data kompleks, referensi siklis, `Set`, `Map`, dan `BigInt`).
+- Engine pada `src/api/seroval.js` mendemonstrasikan implementasi parser standalone di lingkungan Node.js tanpa memerlukan dependensi browser window.
+
+### 2. Siklus Autentikasi Supabase Web3 Auth
+- Membedah integrasi login email tanpa kata sandi (*Passwordless Email OTP*) melalui Supabase Auth API (`/auth/v1/otp` dan `/auth/v1/verify`).
+- Mengimplementasikan mekanisme **Silent Token Refresh** berbasis JWT `refresh_token` (`/auth/v1/token?grant_type=refresh_token`), menjaga sesi akun tetap aktif tanpa perlu intervensi OTP ulang dari pengguna.
+
+### 3. Simulasi Kriptografi Alamat Web3
+- Modul `src/utils/wallet.js` mendemonstrasikan pembuatan pasangan kunci (*keypair*) dan derivasi alamat kriptografi yang valid secara matematis:
+  - **EVM (Ethereum/BSC/Polygon)**: Menggunakan kurva eliptis `secp256k1` dan fungsi hash `keccak256`.
+  - **Solana**: Menggunakan kurva `Ed25519` dengan representasi Base58 encoding.
+
+---
+
+## ⚠️ Disclaimer (Penafian Hukum)
+
+> Proyek ini dibuat **semata-mata untuk tujuan edukasi, riset keamanan perangkat lunak, dan studi teknis** mengenai protokol Web3, serialisasi Seroval, dan arsitektur RPC server modern.
+>
+> 1. **Bukan Nasihat Finansial:** Repositori ini tidak berafiliasi, disponsori, atau didukung secara resmi oleh Qyro Labs.
+> 2. **Tanggung Jawab Pengguna:** Segala risiko penggunaan perangkat lunak ini—termasuk namun tidak terbatas pada penalti akun, diskualifikasi airdrop, atau pemblokiran IP—merupakan tanggung jawab penuh masing-masing pengguna.
+> 3. **Penggunaan Bijak:** Penulis dan kontributor tidak bertanggung jawab atas penyalahgunaan atau kerugian yang timbul dari penggunaan repositori ini. Gunakan dengan bijak dan patuhi ketentuan layanan platform terkait.
