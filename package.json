@@ -1,0 +1,36 @@
+{
+  "name": "qyrolabs-daily",
+  "version": "1.0.0",
+  "description": "Automated daily bot for Qyro Labs ($QYRO) Airdrop Mission Deck, Loot Box, and Arena",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "qyro": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "run": "node index.js run",
+    "login": "node index.js login",
+    "cron": "node index.js cron",
+    "daemon": "node index.js cron",
+    "list": "node index.js list",
+    "top": "node index.js top",
+    "leaderboard": "node index.js top",
+    "help": "node index.js help"
+  },
+  "keywords": [
+    "airdrop",
+    "qyrolabs",
+    "solana",
+    "evm",
+    "web3",
+    "automation",
+    "bot"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "https-proxy-agent": "^7.0.6",
+    "socks-proxy-agent": "^8.0.5"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "email": "pilot1@example.com",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dummy_access_token_payload...",
+    "refreshToken": "v1.mc.dummy_refresh_token...",
+    "expiresAt": 1731550000000,
+    "displayName": "CyberPilot88",
+    "ethereumAddress": "0x1234567890123456789012345678901234567890",
+    "solanaAddress": "7xKXtg2CW87d97TXJSD89sdfjAuG1mJm4mYQih68VbCi",
+    "twitterUsername": "cyberpilot88",
+    "referralCode": "QYRO-XXXXXX",
+    "proxy": null
+  }
+]
